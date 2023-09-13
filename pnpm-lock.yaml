@@ -8,6 +8,10 @@ specifiers:
   ts-node: ^10.9.1
   tsup: ^7.2.0
   typescript: ^5.2.2
+  yaml: ^2.3.2
+
+dependencies:
+  yaml: 2.3.2
 
 devDependencies:
   '@types/jest': 29.5.4
@@ -2950,7 +2954,6 @@ packages:
   /yaml/2.3.2:
     resolution: {integrity: sha512-N/lyzTPaJasoDmfV7YTrYCI0G/3ivm/9wdG0aHuheKowWQwGTsK0Eoiw6utmzAnI6pkJa0DUVygvp3spqqEKXg==}
     engines: {node: '>= 14'}
-    dev: true
 
   /yargs-parser/21.1.1:
     resolution: {integrity: sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==}

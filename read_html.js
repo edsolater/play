@@ -1,16 +1,34 @@
-import { readFile } from 'fs/promises'
+import { readFile, writeFile } from 'fs/promises'
+import { stringify } from 'yaml'
 
-const fileText = await readFile('./data/browser_favorites.html').then((data) => data.toString())
-const items = Array.from(fileText.match(/<A HREF="(.*)" ADD_DATE="(.*)">(.*)<\/A>/g)).map((item) => {
-  const url = item.match(/HREF="(?<url>.*?)"/)?.groups.url
-  const date = item.match(/ADD_DATE="(?<date>.*?)"/)?.groups.date
-  const icon = item.match(/ICON="(?<icon>.*?)"/)?.groups.icon
-  const name = item.match(/>(?<name>.*?)</)?.groups.name
-  return {
-    url,
-    icon,
-    date,
-    name
-  }
-})
-console.log('items: ', items.slice(0, 20))
+const htmlText = await readFavouritesHTML()
+const items = parseInfos(htmlText)
+await writeParsedData(items)
+
+/**
+ *
+ * @param {string} htmlText
+ * @returns
+ */
+function parseInfos(htmlText) {
+  const linkInfos = htmlText.match(/<A(.*?)>(.*?)<\/A>/g)
+  const items = Array.from(linkInfos).map((item) => ({
+    url: item.match(/HREF="(?<url>.*?)"/)?.groups.url,
+    icon: item.match(/ICON="(?<icon>.*?)"/)?.groups.icon,
+    date: item.match(/ADD_DATE="(?<date>.*?)"/)?.groups.date,
+    name: item.match(/>(?<name>.*?)</)?.groups.name
+  }))
+  return items
+}
+
+async function readFavouritesHTML() {
+  return readFile('./data/browser_favorites.html').then((data) => data.toString())
+}
+
+/**
+ *
+ * @param {any[]} items
+ */
+async function writeParsedData(items) {
+  await writeFile('./data/browser_favorites.yaml', stringify(items))
+}
