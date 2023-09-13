@@ -8,7 +8,7 @@
   "sideEffects": false,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "runn": "node ./scripts/read_html.js"
+    "run-read": "node ./read_html.js"
   },
   "keywords": [],
   "author": "",
