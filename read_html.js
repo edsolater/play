@@ -1,8 +1,7 @@
 import { readFile, writeFile } from 'fs/promises'
-import { stringify } from 'yaml'
 
 const htmlText = await readFavouritesHTML()
-const items = parseInfos(htmlText)
+const items = parseInfos(htmlText.match(/<DL>(.*?)<\/DL>/s)[0])
 await writeParsedData(items)
 
 /**
@@ -10,7 +9,8 @@ await writeParsedData(items)
  * @param {string} htmlText
  * @returns
  */
-function parseInfos(htmlText) {
+function parseInfos(htmlText, dictory = []) {
+  console.log('html: ', htmlText.length)
   const linkInfos = htmlText.match(/<A(.*?)>(.*?)<\/A>/g)
   const items = Array.from(linkInfos).map((item) => ({
     url: item.match(/HREF="(?<url>.*?)"/)?.groups.url,

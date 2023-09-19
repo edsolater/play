@@ -22,5 +22,8 @@
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",
     "yaml": "^2.3.2"
+  },
+  "dependencies": {
+    "node-html-parser": "^6.1.10"
   }
 }
