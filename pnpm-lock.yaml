@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@edsolater/fnkit': ^0.1.46
   '@types/jest': ^29.5.4
   '@types/node': ^20.5.7
   jest: ^29.6.4
@@ -12,6 +13,7 @@ specifiers:
   yaml: ^2.3.2
 
 dependencies:
+  '@edsolater/fnkit': 0.1.46
   node-html-parser: 6.1.10
 
 devDependencies:
@@ -369,6 +371,10 @@ packages:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
     dev: true
+
+  /@edsolater/fnkit/0.1.46:
+    resolution: {integrity: sha512-qWsz08uAg9plsmlmMsLeBLUpdr2cXuef9qapODAsNw/ZFKyiJ5g5a7hOXaDUtMCy3W4xgmyqEAMh60kACMXWuQ==}
+    dev: false
 
   /@esbuild/android-arm/0.18.20:
     resolution: {integrity: sha512-fyi7TDI/ijKKNZTUJAQqiG5T7YjJXgnzkURqmGj13C6dCqckZBLdl4h7bkhHt/t0WP+zO9/zwroDvANaOqO5Sw==}

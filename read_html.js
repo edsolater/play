@@ -1,5 +1,6 @@
 import { readFile, writeFile } from 'fs/promises'
 import { parse } from 'node-html-parser'
+import { map } from '@edsolater/fnkit'
 
 const htmlText = await readFavouritesHTML()
 const source = htmlText.replace(/<p>/g, '').match(/<DL>(.*)<\/DL>/s)[0]
@@ -12,6 +13,10 @@ console.log(
     .map((item) => (isHtmlNode(item) ? item.rawText : item.rawText))
 )
 
+console.log(
+  's: ',
+  map(new Set([1]), (i) => i + 1)
+)
 /**
  *
  * @param {string} text
