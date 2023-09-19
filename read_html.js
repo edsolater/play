@@ -30,5 +30,5 @@ async function readFavouritesHTML() {
  * @param {any[]} items
  */
 async function writeParsedData(items) {
-  await writeFile('./data/browser_favorites.yaml', stringify(items))
+  await writeFile('./data/browser_favorites.json', JSON.stringify(items, null, 2))
 }
